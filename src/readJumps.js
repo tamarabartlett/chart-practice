@@ -3,8 +3,6 @@ function ReadJumpsJson(jumps, category) {
   let jumpsCategorized = {}
 
   jumps.forEach((jump) => {
-    let jumpToAdd = {}
-
     if (!jumpsCategorized[jump[category]]){
       jumpsCategorized[jump[category]] = 1;
     } else {

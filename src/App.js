@@ -26,9 +26,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Skydiving Logbook</h1>
         </header>
-        <p className="App-intro">
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
         <LastJump jump={getLastJump()}/>
 
         <PieChart className="myPieChart" width={400} height={250}>
