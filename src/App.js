@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { PieChart, Pie, Tooltip } from 'recharts';
 import './App.css';
 import Jumps from './jumps.js';
 import { ReadJumpsJson } from './readJumps';
 import LastJump from './LastJump.js';
+import ExpansionPanelGraph from './GraphExpansionPanel.js';
+import PieChartPanel from './PieChartPanel.js';
+
+
 
 const getJumpType = () => {
   return ReadJumpsJson(Jumps, "type")
@@ -15,7 +18,6 @@ const getJumpLocation = () => {
 
 const getLastJump = () => {
   return Jumps[Jumps.length - 1]
-  // return Jumps[Jumps.length - 1]
 };
 
 
@@ -26,20 +28,12 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Skydiving Logbook</h1>
         </header>
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
+
         <LastJump jump={getLastJump()}/>
 
-        <PieChart className="myPieChart" width={400} height={250}>
-          <Pie data={getJumpType()} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#E76535" />
-          <Tooltip />
-        </PieChart>
-
-        <PieChart className="myPieChart" width={400} height={100}>
-          <Pie data={getJumpLocation()} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#E76535" />
-          <Tooltip />
-        </PieChart>
+        <ExpansionPanelGraph chartName="Jump #s by Month"/>
+        <PieChartPanel data={getJumpType()} chartName="Jumps By Type"/>
+        <PieChartPanel data={getJumpLocation()} chartName="Jumps By Location"/>
       </div>
     );
   }
