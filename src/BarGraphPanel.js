@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import './css/App.css';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { PieChart, Pie, Tooltip, Legend } from 'recharts';
+import { Tooltip, BarChart, Bar, XAxis, YAxis, Legend } from 'recharts';
 
 const styles = {
   panel: {
@@ -22,29 +23,29 @@ const styles = {
   },
 };
 
-function ExpansionPanelGraph(props) {
+function BarGraphPanel(props) {
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary className={props.classes.panel} expandIcon={<ExpandMoreIcon />}>
         <Typography>{props.chartName}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails className="Panel">
-        <div className="Center-Chart">
-          <PieChart width={300} height={200}>
-            <Pie data={props.data}
-              dataKey="value" nameKey="name" cx="50%" cy="50%" fill="#67c258" />
-            <Tooltip />
-            <Legend layout="vertical" verticalAlign="middle" align="left"/>
+        <BarChart width={200} height={300} data={props.data}
+              margin={{top: 5, right: 5, left: 5, bottom: 5}}>
+           <XAxis dataKey="name"/>
+           <YAxis/>
+           <Tooltip/>
+           <Legend />
+           <Bar dataKey="value" fill="#4b9ec6" />
+        </BarChart>
 
-          </PieChart>
-        </div>
       </ExpansionPanelDetails>
     </ExpansionPanel>
-  );
+  )
 }
 
-ExpansionPanelGraph.propTypes = {
+BarGraphPanel.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ExpansionPanelGraph);
+export default withStyles(styles)(BarGraphPanel);

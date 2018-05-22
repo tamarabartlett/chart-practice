@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import Jumps from './jumps.js';
 import { ReadJumpsJson, ReadJumpsByMonth } from './readJumps';
 import LastJump from './LastJump.js';
@@ -17,7 +17,6 @@ const getJumpLocation = () => {
 };
 
 const getJumpsByMonth = () => {
-  console.log(ReadJumpsByMonth(Jumps));
   return ReadJumpsByMonth(Jumps)
 }
 

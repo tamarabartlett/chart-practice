@@ -4,11 +4,7 @@ function ReadJumpsJson(jumps, category) {
   let jumpsCategorized = {}
 
   jumps.forEach((jump) => {
-    if (!jumpsCategorized[jump[category]]){
-      jumpsCategorized[jump[category]] = 1;
-    } else {
-      jumpsCategorized[jump[category]] = jumpsCategorized[jump[category]] + 1;
-    }
+    jumpsCategorized[jump[category]] = (jumpsCategorized[jump[category]] || 0) + 1;
   })
 
   return formatIntoGraphReadableData(jumpsCategorized)
@@ -17,13 +13,10 @@ function ReadJumpsJson(jumps, category) {
 function ReadJumpsByMonth(jumps) {
   let jumpsByMonth = {}
   jumps.forEach((jump) => {
-    let month = moment(jump['date']).month()
+    let month = moment(jump['date'], 'MM/DD/YYYY').month()
     let monthName = getMonthName(month)
-    if (!jumpsByMonth[monthName]){
-      jumpsByMonth[monthName] = 1;
-    } else {
-      jumpsByMonth[monthName] = jumpsByMonth[monthName] + 1;
-    }
+
+    jumpsByMonth[monthName] = (jumpsByMonth[monthName] || 0) + 1;
   })
 
   return formatIntoGraphReadableData(jumpsByMonth)
