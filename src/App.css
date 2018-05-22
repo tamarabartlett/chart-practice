@@ -4,10 +4,14 @@
   Dark Pink: C02F5A
   Bright Pink: DD3B76
   Background Pink: D11259
-  Orange: E76535 (Not sure if I like it)
+  Dark Orange: E76535 (Not sure if I like it)
+  Light Orange: #f28b4e
   Green: 67c258 (Again, IDK)
   Gray: #222
+  Blue: #4AA7E3 4b9ec6
+  Yellow: EFd65f
 */
+
 
 .App {
   text-align: center;
@@ -26,17 +30,29 @@
   font-size: 1.5em;
 }
 
-.lastJump {
-  font-family:"Poppins";
+.Last-Jump {
+  font-family:"Poppins", sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 16px;
   margin: 0 10%;
 }
 
-.lastJumpData {
-  font-family:"Poppins";
-  font-weight: 700;
+.Last-Jump-Data {
   font-style: italic;
   font-size: 20px;
+}
+
+.Panel-Header {
+  background-color: #C02F5A;
+  box-shadow: 0px 3px 15px #222;
+}
+
+.Panel {
+  background-color: #EFd65f;
+  border: 1px black solid;
+  box-shadow: 0px 3px 15px #222;
+}
+.Center-Chart {
+  margin:auto;
 }

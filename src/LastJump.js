@@ -1,13 +1,13 @@
 import React from 'react';
 
 const LastJump = (props) => (
-  <div className='lastJump'>
+  <div className='Last-Jump'>
     <p>Your last jump, #
-      <span class='lastJumpData'>{props.jump.number}</span>, <br/> was a
-      <span class='lastJumpData'> {props.jump.type}</span> jump on
-      <span class='lastJumpData'> {props.jump.date}</span> at
-      <span class='lastJumpData'> {props.jump.location}</span> from
-      <span class='lastJumpData'> {props.jump.altitude}</span> feet AGL</p>
+      <span className='Last-Jump-Data'>{props.jump.number}</span>, <br/> was a
+      <span className='Last-Jump-Data'> {props.jump.type}</span> jump on
+      <span className='Last-Jump-Data'> {props.jump.date}</span> at
+      <span className='Last-Jump-Data'> {props.jump.location}</span> from
+      <span className='Last-Jump-Data'> {props.jump.altitude}</span> feet AGL</p>
   </div>
 );
 
