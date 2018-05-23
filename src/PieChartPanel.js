@@ -6,7 +6,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { PieChart, Pie, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Tooltip, Legend, Cell } from 'recharts';
 
 const styles = {
   panel: {
@@ -22,6 +22,8 @@ const styles = {
   },
 };
 
+const colors = ['#DD3B76', '#f28b4e', '#29bf12']
+
 function ExpansionPanelGraph(props) {
   return (
     <ExpansionPanel>
@@ -31,11 +33,15 @@ function ExpansionPanelGraph(props) {
       <ExpansionPanelDetails className="Panel">
         <div className="Center-Chart">
           <PieChart width={300} height={200}>
-            <Pie data={props.data}
-              dataKey="value" nameKey="name" cx="50%" cy="50%" fill="#67c258" />
+            <Pie data={props.data} cx="50%" cy="50%" outerRadius={80}>
+              {
+                props.data.map((entry, index) => (
+                  <Cell fill={colors[index]}/>
+                ))
+              }
+            </Pie>
             <Tooltip />
             <Legend layout="vertical" verticalAlign="middle" align="left"/>
-
           </PieChart>
         </div>
       </ExpansionPanelDetails>

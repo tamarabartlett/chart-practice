@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import './css/App.css';
@@ -23,26 +23,49 @@ const styles = {
   },
 };
 
-function BarGraphPanel(props) {
-  return (
-    <ExpansionPanel>
-      <ExpansionPanelSummary className={props.classes.panel} expandIcon={<ExpandMoreIcon />}>
-        <Typography>{props.chartName}</Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails className="Panel">
-        <BarChart width={200} height={300} data={props.data}
-              margin={{top: 5, right: 5, left: 5, bottom: 5}}>
-           <XAxis dataKey="name"/>
-           <YAxis/>
-           <Tooltip/>
-           <Legend />
-           <Bar dataKey="value" fill="#4b9ec6" />
-        </BarChart>
 
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-  )
+class BarGraphPanel extends Component {
+  constructor() {
+    super();
+    this.derp = this.derp.bind(this, 'Derpalerp');
+  }
+
+  derp = (param, e) => {
+    console.log('Parameter', param);
+    console.log('Event', e['name']);
+
+    let monthName = e['name']
+    //mggonaa have to set state
+  }
+
+  render() {
+    return (
+      <ExpansionPanel>
+        <ExpansionPanelSummary className={this.props.classes.panel} expandIcon={<ExpandMoreIcon />}>
+          <Typography>{this.props.chartName}</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails className="Panel">
+          <BarChart
+            width={200}
+            height={300}
+            data={this.props.data}
+            margin={{top: 5, right: 5, left: 5, bottom: 5}}>
+             <XAxis dataKey="name"/>
+             <YAxis/>
+             <Tooltip/>
+             <Legend />
+             <Bar
+               dataKey="value"
+               onClick={this.derp}
+               fill="#00bfff" />
+          </BarChart>
+
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    );
+  }
 }
+
 
 BarGraphPanel.propTypes = {
   classes: PropTypes.object.isRequired,
